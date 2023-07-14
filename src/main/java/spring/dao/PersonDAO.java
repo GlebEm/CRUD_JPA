@@ -13,6 +13,7 @@ import java.util.List;
 public class PersonDAO {
 
     private final SessionFactory sessionFactory;
+
     @Autowired
     public PersonDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -21,25 +22,39 @@ public class PersonDAO {
     @Transactional(readOnly = true)
     public List<Person> index() {
         Session session = sessionFactory.getCurrentSession();
-        List<Person> people = session.createQuery("select p from Person p",Person.class)
+
+        return session.createQuery("select p from Person p", Person.class)
                 .getResultList();
-        return people;
     }
 
+    @Transactional(readOnly = true)
     public Person show(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Person.class, id);
 
-        return null;
     }
 
+    @Transactional
     public void save(Person person) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.save(person);
     }
 
+    @Transactional
     public void update(int id, Person updatePerson) {
+        Session session = sessionFactory.getCurrentSession();
+        Person personToBeUpdated = session.get(Person.class, id);
+
+        personToBeUpdated.setName(updatePerson.getName());
+        personToBeUpdated.setAge(updatePerson.getAge());
+        personToBeUpdated.setEmail(updatePerson.getEmail());
 
     }
 
+    @Transactional
     public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(session.get(Person.class, id));
 
     }
 

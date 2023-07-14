@@ -22,6 +22,10 @@ public class Person {
     @Column(name="age")
     private int age;
 
+    @Column(name="email")
+    @NotEmpty(message = "Email should not be Empty!")
+    @Email
+    private String email;
 
     public Person(){
     }
@@ -56,4 +60,11 @@ public class Person {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
