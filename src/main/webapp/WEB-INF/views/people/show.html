@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person</title>
+</head>
+<body>
+<style>
+    table {
+        border-spacing: 0 5px;
+        font: bold 100% Georgia, serif;
+        margin: 40px 0;
+        text-shadow: 5px 5px 5px #3F3F7F;
+        background: #B1B9D9;
+        text-align: center;
+        vertical-align: middle;
+        width: 50%;
+        border: 10px solid #7b00ff;
+    }
+
+    caption {
+        color: black;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+    th {
+        color: #7348ab;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    input, button {
+        color: #e22b46;
+        background: #f0fffb;
+        font: bold 100% Georgia, serif;
+        text-shadow: 5px 5px 5px #5a6243;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+<p th:text="${'Name: ' + person.getName()+ ',   Age: '+ person.getAge()}">VALUE</p>
+
+<p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
+<p th:text="${'ID: ' + person.getId()}">VALUE</p>
+
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+<br/>
+<hr/>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type = "submit" value="Delete"/>
+</form>
+</body>
+</html>
