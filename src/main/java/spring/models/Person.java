@@ -24,7 +24,7 @@ public class Person {
 
     @Column(name="email")
     @NotEmpty(message = "Email should not be Empty!")
-    @Email
+    @Email(message = "not email form, use @")
     private String email;
 
     public Person(){
