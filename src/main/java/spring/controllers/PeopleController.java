@@ -21,11 +21,20 @@ public class PeopleController {
         this.personDAO = personDAO;
     }
 
+
+
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }
+
+//    @GetMapping("/createTable")
+//    public String createUsersTable(){
+//        personDAO.createUsersTable();
+//        return "people/create";
+//    }
+
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
