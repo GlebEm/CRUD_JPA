@@ -5,50 +5,66 @@
     <title>All people</title>
 </head>
 <body>
+
+
 <style>
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     table {
-        border-spacing: 0 5px;
-        font: bold 100% Georgia, serif;
-        margin: 40px 0;
-        text-shadow: 5px 5px 5px #3F3F7F;
-        background: #B1B9D9;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid black;
         text-align: center;
-        vertical-align: middle;
-        width: 50%;
-        border: 10px solid blue;
     }
 
-    caption {
-        color: black;
-        font-weight: bold;
-        font-size: 25px;
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
     }
 
-    th {
-        color: #49008f;
-        font-weight: bold;
-        font-size: 18px;
+    tr:hover {
+        background-color: #ddd;
     }
 
-    input, button {
-        color: #e32626;
-        background: #c59c9c;
-        font: bold 100% Georgia, serif;
-        text-shadow: 5px 5px 5px #4b4bb9;
-        margin: 0 auto;
-        text-align: center;
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 </style>
 
-<div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}"
-       th:text="${person.getName() + ', '+ person.getAge()}">user</a>
+<div class="center">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+        <div th:each="person : ${people}">
+            <tr>
+                <td>
+                    <a th:href="@{/people/{id}(id=${person.getId()})}"
+                       th:text="${person.getName()}">user</a>
+                </td>
+                <td th:text="${person.getAge()}"></td>
+                </td>
+                <td th:text="${person.getEmail()}"></td>
+            </tr>
+        </div>
+    </table>
 </div>
 
 <br/>
 <hr/>
 
 <a href="/people/new">Create new person</a>
+</div>
 
 </body>
 </html>

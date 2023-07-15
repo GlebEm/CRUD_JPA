@@ -54,7 +54,6 @@ public class PersonDAO {
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         Person personToBeUpdated = entityManager.find(Person.class, id);
-
         personToBeUpdated.setName(updatePerson.getName());
         personToBeUpdated.setAge(updatePerson.getAge());
         personToBeUpdated.setEmail(updatePerson.getEmail());

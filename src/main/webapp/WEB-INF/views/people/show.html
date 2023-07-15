@@ -31,20 +31,45 @@
     }
 
     input, button {
-        color: #e22b46;
-        background: #f0fffb;
-        font: bold 100% Georgia, serif;
-        text-shadow: 5px 5px 5px #5a6243;
-        margin: 0 auto;
+        display: inline-block;
+        padding: 10px 22px;
+        font-size: 14px;
+        font-weight: bold;
         text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #ff0000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #cc0018;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 22px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #006fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: #0055cc;
     }
 </style>
-<p th:text="${'Name: ' + person.getName()+ ',   Age: '+ person.getAge()}">VALUE</p>
+<p style ="color:#006fff" th:text="${'Name: ' + person.getName()+ ',   Age: '+ person.getAge()}">VALUE</p>
 
-<p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
-<p th:text="${'ID: ' + person.getId()}">VALUE</p>
+<p style ="color:#006fff" th:text="${'Email: ' + person.getEmail()}">VALUE</p>
+<p style ="color:#006fff" th:text="${'ID: ' + person.getId()}">VALUE</p>
 
-<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}" class="button">Edit</a>
 <br/>
 <hr/>
 

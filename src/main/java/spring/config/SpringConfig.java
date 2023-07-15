@@ -86,6 +86,10 @@ public class SpringConfig implements WebMvcConfigurer {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("spring.models");
         factory.setDataSource(dataSource());
+
+        Properties props=new Properties();
+        props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+
         factory.afterPropertiesSet();
 
         return factory.getObject();
