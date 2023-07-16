@@ -17,15 +17,14 @@ import java.util.List;
 @Transactional
 public class PersonDAO {
 
-    //
+
     @PersistenceContext
     EntityManager entityManager;
     private final EntityManagerFactory entityManagerFactory;
-    //
    // entityManager = entityManagerFactory.createEntityManager();
     @Autowired
     public PersonDAO(EntityManagerFactory entityManagerFactory) {
-     //   this.entityManagerFactory = entityManagerFactory;
+
         this.entityManagerFactory = entityManagerFactory;
     }
 
